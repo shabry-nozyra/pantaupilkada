@@ -3,6 +3,7 @@ package env
 import (
 	"fmt"
 	"github.com/spf13/viper"
+	"os"
 	"reflect"
 )
 
@@ -12,11 +13,16 @@ type Config struct {
 	PostgresDB   string `mapstructure:"POSTGRES_DB" default:""`
 	PostgresUser string `mapstructure:"POSTGRES_USER" default:""`
 	PostgresPass string `mapstructure:"POSTGRES_PASSWORD" default:""`
-	AppHost 	 string `mapstructure:"APP_HOST" default:"0.0.0.0:8080"`
+	AppHost 	 string `mapstructure:"APP_HOST" default:"127.0.0.1:8080"`
 }
 
 func (c *Config) ConnectionString() string {
-	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable", c.PostgresHost, c.PostgresUser, c.PostgresPass, c.PostgresDB, c.PostgresPort)
+	return fmt.Sprintf("postgres://%v:%v@%v:%v/%v?sslmode=disable",
+		c.PostgresUser,
+		os.Getenv("PostgresPass"),
+		os.Getenv("PostgresHost"),
+		os.Getenv("PostgresPort"),
+		c.PostgresDB)
 }
 
 var (

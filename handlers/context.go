@@ -18,7 +18,7 @@ func (ctx *Context) Register(group string) {
 	{
 
 		public.POST("/login",  ctx.loginHandler)
-		public.GET("/paslon", auth, ctx.getAll)
+		public.GET("/paslon", ctx.getAll)
 		public.GET("/paslon/:id", ctx.getPaslon)
 		public.POST("/paslon/add", ctx.createPaslon)
 		public.PUT("/paslon/update", ctx.updatePaslon)
@@ -61,6 +61,9 @@ func (ctx *Context) Register(group string) {
 		public.DELETE("/pesan/delete/:id", ctx.deletePesan)
 
 		public.GET("/petugas", ctx.getAllPetugas)
+		public.GET("/petugastps", ctx.getAllPetugasTPS)
+		public.GET("/petugaskec", ctx.getAllPetugasKec)
+		public.GET("/petugaskab", ctx.getAllPetugasKab)
 		public.GET("/petugas/:id", ctx.getPetugas)
 		public.POST("/petugas/add", ctx.createPetugas)
 		public.PUT("/petugas/update", ctx.updatePetugas)

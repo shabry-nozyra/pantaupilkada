@@ -24,6 +24,45 @@ func (ctx *Context) getAllPetugas(c *gin.Context) {
 	c.JSON(http.StatusOK, &p)
 }
 
+func (ctx *Context) getAllPetugasTPS(c *gin.Context) {
+	p := models.Petugass{}
+	err := p.AllTPS(ctx.DB)
+
+	if err != nil{
+		ctx.Log.Error(err.Error())
+		errorm := "Gagal Menjalankan Query"
+		c.JSON(http.StatusInternalServerError, errorm)
+		return
+	}
+	c.JSON(http.StatusOK, &p)
+}
+
+func (ctx *Context) getAllPetugasKec(c *gin.Context) {
+	p := models.Petugass{}
+	err := p.AllKec(ctx.DB)
+
+	if err != nil{
+		ctx.Log.Error(err.Error())
+		errorm := "Gagal Menjalankan Query"
+		c.JSON(http.StatusInternalServerError, errorm)
+		return
+	}
+	c.JSON(http.StatusOK, &p)
+}
+
+func (ctx *Context) getAllPetugasKab(c *gin.Context) {
+	p := models.Petugass{}
+	err := p.AllKab(ctx.DB)
+
+	if err != nil{
+		ctx.Log.Error(err.Error())
+		errorm := "Gagal Menjalankan Query"
+		c.JSON(http.StatusInternalServerError, errorm)
+		return
+	}
+	c.JSON(http.StatusOK, &p)
+}
+
 
 func (ctx *Context) getPetugas(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))

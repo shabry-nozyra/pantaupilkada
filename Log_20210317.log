@@ -1,0 +1,7 @@
+time="2021-03-17T01:21:01+07:00" level=fatal msg="cannot parse `postgres://postgres:\"mysecretpassword\"@\"localhost\":5433/postgres?sslmode=disable`: failed to parse as URL (parse \"postgres://postgres:\\\"mysecretpassword\\\"@\\\"localhost\\\":5433/postgres?sslmode=disable\": net/url: invalid userinfo)"
+time="2021-03-17T01:25:31+07:00" level=fatal msg="cannot parse `host=\"localhost\" user=postgres password=xxxxx dbname=postgres port=%!d(string=5433) sslmode=disable`: invalid port (strconv.ParseUint: parsing \"%!d(string=5433)\": invalid syntax)"
+time="2021-03-17T01:27:02+07:00" level=fatal msg="failed to connect to `host=\"localhost\" user=postgres database=postgres`: hostname resolving error (lookup \"localhost\": no such host)"
+time="2021-03-17T01:28:45+07:00" level=fatal msg="failed to connect to `host=localhost user=postgres database=postgres`: server error (FATAL: password authentication failed for user \"postgres\" (SQLSTATE 28P01))"
+time="2021-03-17T01:32:12+07:00" level=info msg="start listen and serve at 8080"
+time="2021-03-17T01:33:39+07:00" level=info msg="start listen and serve at 8080"
+time="2021-03-17T01:38:08+07:00" level=info msg="start listen and serve at 8080"

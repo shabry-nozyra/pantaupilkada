@@ -10,6 +10,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"net/http"
+	"os"
 )
 
 
@@ -21,7 +22,7 @@ func main()  {
 	db, err := gorm.Open(postgres.Open(cs), &gorm.Config{})
 
 	if err != nil{
-		l.Fatal("Koneksi Ke Database Gagal")
+		l.Fatal(err)
 
 		return
 	}
@@ -31,7 +32,7 @@ func main()  {
 		l.Error("AutoMigrate Gagal")
 		return
 	}
-
+	gin.SetMode(gin.ReleaseMode)
 	g := gin.Default()
 
 	c := cors.DefaultConfig()
@@ -43,9 +44,10 @@ func main()  {
 
 	h := handlers.Context{Gin: g, DB: db, Log: l}
 	h.Register("")
+	port := os.Getenv("AppPort")
 
-	l.Infof("start listen and serve at %v", env.Get().AppHost)
-	s := &http.Server{Addr: env.Get().AppHost, Handler: g}
+	l.Infof("start listen and serve at %v", port)
+	s := &http.Server{Addr: "0.0.0.0:" + port, Handler: g}
 	err = s.ListenAndServe()
 	if err != nil {
 		l.Fatal("failed to connect to serv")

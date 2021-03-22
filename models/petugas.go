@@ -19,6 +19,7 @@ type (
 		Password string `json:"password" gorm:"column:password;"`
 		RolePetugas uint8 `json:"role_petugas" gorm:"column:role_petugas;"`
 		IsActive uint8 `json:"is_active" gorm:"column:is_active;"`
+		Lokasi string `json:"lokasi" gorm:"column:lokasi;size:100;"`
 		TimeKirim uint8 `json:"timekirim" gorm:"column:timekirim;"`
 	}
 )
@@ -48,6 +49,20 @@ type Petugass []Petugas
 func (p *Petugass) All(db *gorm.DB) error {
 	return db.Model(Petugas{}).Find(p).Error
 }
+
+func (p *Petugass) AllTPS(db *gorm.DB) error {
+	return db.Model(Petugas{}).Where("role_petugas = 1").Find(p).Error
+}
+
+func (p *Petugass) AllKec(db *gorm.DB) error {
+	return db.Model(Petugas{}).Where("role_petugas = 2").Find(p).Error
+}
+
+func (p *Petugass) AllKab(db *gorm.DB) error {
+	return db.Model(Petugas{}).Where("role_petugas = 3").Find(p).Error
+}
+
+
 
 
 
