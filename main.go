@@ -47,7 +47,7 @@ func main()  {
 	port := os.Getenv("AppPort")
 
 	l.Infof("start listen and serve at %v", port)
-	s := &http.Server{Addr: "0.0.0.0:" + port, Handler: g}
+	s := &http.Server{Addr: "localhost:" + port, Handler: g}
 	err = s.ListenAndServe()
 	if err != nil {
 		l.Fatal("failed to connect to serv")

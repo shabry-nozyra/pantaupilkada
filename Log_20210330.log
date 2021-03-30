@@ -1,0 +1,2 @@
+time="2021-03-30T07:10:12+07:00" level=fatal msg="failed to connect to `host=postgresserverpilkada.postgres.database.azure.com user=pantauadminpilkada database=pantaupilkadadb`: server error (FATAL: no pg_hba.conf entry for host \"110.137.83.172\", user \"pantauadminpilkada\", database \"pantaupilkadadb\", SSL off (SQLSTATE 28000))"
+time="2021-03-30T07:12:44+07:00" level=info msg="start listen and serve at 8000"

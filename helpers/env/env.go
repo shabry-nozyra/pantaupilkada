@@ -8,8 +8,8 @@ import (
 )
 
 type Config struct {
-	PostgresHost string `mapstructure:"POSTGRES_HOST" default:"localhost"`
-	PostgresPort int    `mapstructure:"POSTGRES_PORT" default:"5433"`
+	PostgresHost string `mapstructure:"POSTGRES_HOST" default:""`
+	PostgresPort int    `mapstructure:"POSTGRES_PORT" default:"5432"`
 	PostgresDB   string `mapstructure:"POSTGRES_DB" default:""`
 	PostgresUser string `mapstructure:"POSTGRES_USER" default:""`
 	PostgresPass string `mapstructure:"POSTGRES_PASSWORD" default:""`
@@ -17,12 +17,12 @@ type Config struct {
 }
 
 func (c *Config) ConnectionString() string {
-	return fmt.Sprintf("postgres://%v:%v@%v:%v/%v?sslmode=disable",
-		c.PostgresUser,
+	return fmt.Sprintf("postgres://%v:%v@%v:%v/%v",
+		os.Getenv("PostgresUser"),
 		os.Getenv("PostgresPass"),
 		os.Getenv("PostgresHost"),
 		os.Getenv("PostgresPort"),
-		c.PostgresDB)
+		os.Getenv("PostgresDB"))
 }
 
 var (
