@@ -21,7 +21,7 @@ func (c *Config) ConnectionString() string {
 		os.Getenv("PostgresUser"),
 		os.Getenv("PostgresPass"),
 		os.Getenv("PostgresHost"),
-		os.Getenv("PostgresPort"),
+		c.PostgresPort,
 		os.Getenv("PostgresDB"))
 }
 
