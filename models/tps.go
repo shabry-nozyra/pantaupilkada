@@ -5,14 +5,14 @@ import (
 )
 type (
 	TPS struct {
-		ID uint `json:"id" gorm:"column:id;primaryKey;autoIncrement"`
-		NoTPS uint8 `json:"no_tps" gorm:"column:no_tps;"`
+		ID int64 `json:"id" gorm:"column:id;primaryKey;autoIncrement"`
+		NoTPS int64 `json:"no_tps" gorm:"column:no_tps;"`
 		Lokasi string `json:"lokasi" gorm:"column:lokasi;size:100;"`
 		Kecamatan string `json:"kecamatan" gorm:"column:kecamatan;size:50;"`
 		Nagari string `json:"nagari" gorm:"column:nagari;size:50;"`
 		Jorong string `json:"jorong" gorm:"column:jorong;size:50;"`
-		JPL uint8 `json:"jpl" gorm:"column:jpl;"`
-		IsActive uint8 `json:"is_active" gorm:"column:is_active;"`
+		JPL int64 `json:"jpl" gorm:"column:jpl;"`
+		IsActive int64 `json:"is_active" gorm:"column:is_active;"`
 	}
 )
 func (TPS) TableName() string{
