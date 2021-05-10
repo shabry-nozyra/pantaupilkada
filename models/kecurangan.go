@@ -7,13 +7,15 @@ import (
 type (
 	Kecurangan struct {
 		ID uint 			`json:"id" gorm:"column:id;primaryKey;autoIncrement"`
-		Detail string 		`json:"halaman" gorm:"column:halaman;size:100"`
+		Detail string 		`json:"detail" gorm:"column:detail;size:100"`
 		WaktuKejadian string `json:"waktu" gorm:"column:waktu;"`
 		Jam uint 			`json:"jam" gorm:"column:jam;"`
 		Tempat string 		`json:"tempat" gorm:"column:tempat;"`
 		Bukti1 string 		`json:"bukti1" gorm:"column:bukti1;"`
 		Bukti2 string 		`json:"bukti2" gorm:"column:bukti2;"`
 		Bukti3 string 		`json:"bukti3" gorm:"column:bukti3;"`
+		Pengirim string 	`json:"pengirim" gorm:"column:pengirim;"`
+
 	}
 )
 

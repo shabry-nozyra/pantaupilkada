@@ -24,9 +24,12 @@ func (ctx *Context) Register(group string) {
 		public.PUT("/paslon/update", ctx.updatePaslon)
 		public.DELETE("/paslon/delete/:id", ctx.delete)
 
+
 		public.GET("/adminauth", ctx.getAllAdminAuth)
 		public.GET("/adminauth/:id", ctx.getAdminAuth)
-		public.POST("/adminauth/add", ctx.createAdminAuth)
+		public.POST("/api/register", ctx.Registeradmin)
+		public.POST("/api/login", ctx.Loginadmin)
+		public.GET("/api/admin", ctx.Admin)
 		public.PUT("/adminauth/update", ctx.updateAdminAuth)
 		public.DELETE("/adminauth/delete/:id", ctx.deleteAdminAuth)
 
@@ -53,6 +56,8 @@ func (ctx *Context) Register(group string) {
 		public.POST("/konten/add", ctx.createKonten)
 		public.PUT("/konten/update", ctx.updateKonten)
 		public.DELETE("/konten/delete/:id", ctx.deleteKonten)
+
+		public.GET("/lokasi", ctx.getAllLokasi)
 
 		public.GET("/pesan", ctx.getAllPesan)
 		public.GET("/pesan/:id", ctx.getPesan)

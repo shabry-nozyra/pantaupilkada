@@ -1,0 +1,2 @@
+time="2021-05-07T07:56:40+07:00" level=fatal msg="failed to connect to `host=localhost user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5434: connectex: No connection could be made because the target machine actively refused it.)"
+time="2021-05-07T07:57:21+07:00" level=info msg="start listen and serve at 8080"

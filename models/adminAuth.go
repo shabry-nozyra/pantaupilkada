@@ -13,14 +13,18 @@ type (
 		Image string `json:"image" gorm:"column:image;"`
 		RoleAdmin uint `json:"role_id" gorm:"column:role_id;"`
 		IsActive uint8 `json:"is_active" gorm:"column:is_active;"`
-		TimeCreated uint8 `json:"timecreated" gorm:"column:timecreated;"`
+		TimeCreated int64 `json:"timecreated" gorm:"column:time_created;null"`
 	}
 )
 func (Admin) TableName() string{
-	return "admin" //nama table di database
+	return "admin_auth" //nama table di database
 }
 func (p *Admin) Get(db *gorm.DB, ID int) error {
 	return db.Model(Admin{}).Where("id = ?", ID).First(p).Error
+}
+
+func (p *Admin) GetByEmail(db *gorm.DB, Email string) error {
+	return db.Model(Admin{}).Where("email = ?", Email).First(p).Error
 }
 
 
@@ -38,8 +42,8 @@ func (p *Admin) Delete(db *gorm.DB, ID int) error {
 
 type Admins []Admin
 
-func (p *Admins) All(db *gorm.DB) error {
-	return db.Model(Admin{}).Find(p).Error
+func (a *Admins) All(db *gorm.DB) error {
+	return db.Model(Admin{}).Find(a).Error
 }
 
 
