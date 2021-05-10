@@ -158,7 +158,7 @@ func (ctx *Context) Registeradmin(c *gin.Context) {
 	password, _ := HashPassword(p.Password)
 	//
 	a := models.Admin{
-		ID: p.ID,
+		ID: models.MaxId(ctx.DB)+1,
 		Name: p.Name,
 		Email: p.Email,
 		Password: password,

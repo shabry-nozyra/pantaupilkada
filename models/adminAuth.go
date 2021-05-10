@@ -6,9 +6,9 @@ import (
 
 type (
 	Admin struct {
-		ID uint `json:"id" gorm:"column:id;primaryKey;autoIncrement"`
+		ID uint `json:"id" gorm:"column:id;primaryKey;autoIncrement;unique"`
 		Name string `json:"name" gorm:"column:name;size:100;"`
-		Email string `json:"email" gorm:"column:email;size:50;"`
+		Email string `json:"email" gorm:"column:email;size:50;unique"`
 		Password string `json:"password" gorm:"column:password;"`
 		Image string `json:"image" gorm:"column:image;"`
 		RoleAdmin uint `json:"role_id" gorm:"column:role_id;"`
@@ -38,6 +38,13 @@ func (p *Admin) Update(db *gorm.DB) error {
 
 func (p *Admin) Delete(db *gorm.DB, ID int) error {
 	return db.Model(Admin{}).Where("id = ?", ID).Delete(p).Error
+}
+
+
+func MaxId(db *gorm.DB) uint{
+	var max uint
+	db.Table("admin_auth").Select("max(id)").Row().Scan(&max)
+	return max
 }
 
 type Admins []Admin
