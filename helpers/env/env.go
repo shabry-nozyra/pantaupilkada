@@ -9,7 +9,7 @@ import (
 
 type Config struct {
 	PostgresHost string `mapstructure:"POSTGRES_HOST" default:""`
-	PostgresPort int    `mapstructure:"POSTGRES_PORT" default:"5434"`
+	PostgresPort int    `mapstructure:"POSTGRES_PORT" default:"5432"`
 	PostgresDB   string `mapstructure:"POSTGRES_DB" default:""`
 	PostgresUser string `mapstructure:"POSTGRES_USER" default:""`
 	PostgresPass string `mapstructure:"POSTGRES_PASSWORD" default:""`
