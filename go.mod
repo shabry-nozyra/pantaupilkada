@@ -8,6 +8,7 @@ require (
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.6.3
 	github.com/gofiber/fiber/v2 v2.9.0
+	github.com/jung-kurt/gofpdf v1.16.2
 	github.com/sirupsen/logrus v1.8.0
 	github.com/spf13/viper v1.7.1
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83

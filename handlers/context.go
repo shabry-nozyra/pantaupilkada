@@ -73,7 +73,6 @@ func (ctx *Context) Register(group string) {
 		public.POST("/petugas/add", ctx.createPetugas)
 		public.PUT("/petugas/update", ctx.updatePetugas)
 		public.DELETE("/petugas/delete/:id", ctx.deletePetugas)
-
 		public.GET("/tps", ctx.getAllTPS)
 		public.GET("/tps/:id", ctx.getTPS)
 		public.POST("/tps/add", ctx.createTPS)
