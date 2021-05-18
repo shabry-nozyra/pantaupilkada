@@ -7,20 +7,20 @@ import (
 type (
 	Petugas struct {
 		ID uint `json:"id" gorm:"column:id;primaryKey;autoIncrement"`
-		NoTPS uint8 `json:"no_tps" gorm:"column:no_tps;"`
+		NoTPS string `json:"no_tps" gorm:"column:no_tps;"`
 		Kecamatan string `json:"kecamatan" gorm:"column:kecamatan;size:100;"`
 		Nagari string `json:"nagari" gorm:"column:nagari;size:100;"`
 		Jorong string `json:"jorong" gorm:"column:jorong;size:100;"`
-		Foto uint8 `json:"foto" gorm:"column:foto;"`
-		NoHp uint8 `json:"no_hp" gorm:"column:no_hp;"`
-		Email string `json:"email" gorm:"column:email;"`
+		Foto string `json:"foto" gorm:"column:foto;"`
+		NoHp string `json:"no_hp" gorm:"column:no_hp;"`
+		Email string `json:"email" gorm:"column:gmail;"`
 		Username string `json:"username" gorm:"column:username;size:50;"`
 		NamaLengkap string `json:"nama_lengkap" gorm:"column:nama_lengkap;size:50;"`
 		Password string `json:"password" gorm:"column:password;"`
-		RolePetugas uint8 `json:"role_petugas" gorm:"column:role_petugas;"`
-		IsActive uint8 `json:"is_active" gorm:"column:is_active;"`
+		RolePetugas int64 `json:"role_petugas" gorm:"column:role_petugas;"`
+		IsActive int64 `json:"is_active" gorm:"column:is_active;"`
 		Lokasi string `json:"lokasi" gorm:"column:lokasi;size:100;"`
-		TimeKirim uint8 `json:"timekirim" gorm:"column:timekirim;"`
+		TimeKirim int64 `json:"timekirim" gorm:"column:timekirim;"`
 	}
 )
 func (Petugas) TableName() string{
