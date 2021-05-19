@@ -38,7 +38,7 @@ func main()  {
 	c := cors.DefaultConfig()
 	c.AllowWildcard = true
 	c.AllowCredentials = true
-	c.AllowOrigins = []string{"https://pantaufront.azurewebsites.net"}
+	c.AllowOrigins = []string{"https://pantaufront.azurewebsites.net","http://localhost:8001"}
 	c.AddAllowHeaders("Authorization", "Content-Type", "Access-Control-Allow-Credentials")
 	c.AddExposeHeaders("Authorization", "Content-Type", "Access-Control-Allow-Credentials")
 	g.Use(cors.New(c))

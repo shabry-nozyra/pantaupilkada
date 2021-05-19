@@ -254,3 +254,8 @@ func (ctx *Context) Admin(c *gin.Context) {
 	c.JSON(http.StatusOK, admin)
 
 }
+
+func (ctx *Context) Logoutadmin(c *gin.Context){
+	c.SetCookie("jwt", "", -(60*60*24), "", "", false, true)
+	c.JSON(http.StatusOK, "success")
+}

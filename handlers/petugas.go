@@ -4,9 +4,16 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shabry-nozyra/pantaupilkada/models"
 	"gorm.io/gorm"
+	"log"
 	"net/http"
 	"strconv"
+	"gopkg.in/gomail.v2"
 )
+const CONFIG_SMTP_HOST = "smtp.gmail.com"
+const CONFIG_SMTP_PORT = 587
+const CONFIG_SENDER_NAME = "PT. NOZYRA Global Solusindo <rancak.nozyra@gmail.com>"
+const CONFIG_AUTH_EMAIL = "rancak.nozyra@gmail.com"
+const CONFIG_AUTH_PASSWORD = "n0zyrarancak"
 
 
 
@@ -173,5 +180,30 @@ func (ctx *Context) updatePetugas(c *gin.Context) {
 		"status": "Succesfully",
 	}
 	c.JSON(http.StatusCreated, res)
+}
+
+func (ctx *Context) sendEmail(c *gin.Context) {
+	Tujuan := c.Param("tujuan")
+	mailer := gomail.NewMessage()
+	mailer.SetHeader("From", CONFIG_SENDER_NAME)
+	mailer.SetHeader("To", Tujuan)
+	//mailer.SetAddressHeader("Cc", "tralalala@gmail.com", "Tra Lala La")
+	mailer.SetHeader("Subject", "Test mail")
+	mailer.SetBody("text/html", "Hello, <b>have a nice day</b>")
+	//mailer.Attach("./sample.png")
+
+	dialer := gomail.NewDialer(
+		CONFIG_SMTP_HOST,
+		CONFIG_SMTP_PORT,
+		CONFIG_AUTH_EMAIL,
+		CONFIG_AUTH_PASSWORD,
+	)
+
+	err := dialer.DialAndSend(mailer)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	log.Println("Mail sent!")
 }
 

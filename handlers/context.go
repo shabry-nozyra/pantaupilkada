@@ -29,7 +29,9 @@ func (ctx *Context) Register(group string) {
 		public.GET("/adminauth/:id", ctx.getAdminAuth)
 		public.POST("/api/register", ctx.Registeradmin)
 		public.POST("/api/login", ctx.Loginadmin)
+		public.POST("/api/logout", ctx.Logoutadmin)
 		public.GET("/api/admin", ctx.Admin)
+
 		public.PUT("/adminauth/update", ctx.updateAdminAuth)
 		public.DELETE("/adminauth/delete/:id", ctx.deleteAdminAuth)
 
@@ -71,6 +73,7 @@ func (ctx *Context) Register(group string) {
 		public.GET("/petugaskab", ctx.getAllPetugasKab)
 		public.GET("/petugas/:id", ctx.getPetugas)
 		public.POST("/petugas/add", ctx.createPetugas)
+		public.POST("/sendemail/:tujuan", ctx.sendEmail)
 		public.PUT("/petugas/update", ctx.updatePetugas)
 		public.DELETE("/petugas/delete/:id", ctx.deletePetugas)
 		public.GET("/tps", ctx.getAllTPS)
