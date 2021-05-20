@@ -36,9 +36,9 @@ func main()  {
 	g := gin.Default()
 
 	c := cors.DefaultConfig()
-	c.AllowWildcard = true
+	c.AllowWildcard = false
 	c.AllowCredentials = true
-	c.AllowOrigins = []string{"https://pantaufront.azurewebsites.net","http://localhost:8001"}
+	c.AllowOrigins = []string{"https://pantaufront.azurewebsites.net"}
 	c.AddAllowHeaders("Authorization", "Content-Type", "Access-Control-Allow-Credentials")
 	c.AddExposeHeaders("Authorization", "Content-Type", "Access-Control-Allow-Credentials")
 	g.Use(cors.New(c))
