@@ -217,7 +217,6 @@ func (ctx *Context) Loginadmin(c *gin.Context){
 	}
 
 	c.SetCookie("jwt", token, 60*60*24, "/", "pantaufront.azurewebsites.net", true, false)
-
 	c.JSON(http.StatusOK, "success")
 }
 
