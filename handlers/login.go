@@ -8,6 +8,10 @@ import (
 	"net/http"
 )
 
+func (ctx *Context) Welcome(c *gin.Context) {
+	c.JSON(http.StatusOK, "API Success")
+}
+
 func (ctx *Context)loginHandler(c *gin.Context) {
 	user  := models.Credential{}
 	err := c.ShouldBindJSON(&user)

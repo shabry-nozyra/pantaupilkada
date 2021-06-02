@@ -13,10 +13,13 @@ import (
 
 const SecretKey = "secret"
 
+
+
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	return string(bytes), err
 }
+
 
 func CheckPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
@@ -215,7 +218,6 @@ func (ctx *Context) Loginadmin(c *gin.Context){
 		c.JSON(http.StatusInternalServerError,"could not login")
 		return
 	}
-
 	c.SetCookie("jwt", token, 60*60*24, "/", "pantaufront.azurewebsites.net", true, false)
 	c.JSON(http.StatusOK, "success")
 }

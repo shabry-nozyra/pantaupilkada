@@ -8,8 +8,8 @@ type (
 	Admin struct {
 		ID uint `json:"id" gorm:"column:id;primaryKey;autoIncrement;unique"`
 		Name string `json:"name" gorm:"column:name;size:100;"`
-		Email string `json:"email" gorm:"column:email;size:50;unique"`
-		Password string `json:"password" gorm:"column:password;"`
+		Email string `json:"email" gorm:"column:email;size:50;unique" binding:"required"`
+		Password string `json:"password" gorm:"column:password;" binding:"required"`
 		Image string `json:"image" gorm:"column:image;"`
 		RoleAdmin uint `json:"role_id" gorm:"column:role_id;"`
 		IsActive uint8 `json:"is_active" gorm:"column:is_active;"`
