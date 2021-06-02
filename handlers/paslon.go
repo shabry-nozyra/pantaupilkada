@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/shabry-nozyra/pantaupilkada/models"
 	"gorm.io/gorm"
@@ -13,22 +12,9 @@ import (
 
 //getAll
 func (ctx *Context) getAll(c *gin.Context) {
-	cookie, _ := c.Cookie("jwt")
-
-	_, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return []byte(SecretKey), nil
-	})
-
-	if err != nil {
-		res := map[string]string{
-			"status": "unauthenticated",
-		}
-		c.JSON(http.StatusUnauthorized, res)
-		return
-	}
 
 	p := models.Paslons{}
-	err = p.All(ctx.DB)
+	err := p.All(ctx.DB)
 
 	if err != nil{
 		ctx.Log.Error(err.Error())
